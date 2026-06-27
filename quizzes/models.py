@@ -14,7 +14,7 @@ class Test(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField(blank=True)
     subject = models.ForeignKey(
-        Subject, on_delete=models.CASCADE
+        Subject, on_delete=models.CASCADE, related_name="tests"
     )  # many tests belong to one subject
 
     def __str__(self):
@@ -24,7 +24,7 @@ class Test(models.Model):
 class Question(models.Model):
     text = models.TextField()
     test = models.ForeignKey(
-        Test, on_delete=models.CASCADE
+        Test, on_delete=models.CASCADE, related_name="questions"
     )  # many questions belong to one test
 
     def __str__(self):
@@ -34,7 +34,7 @@ class Question(models.Model):
 class Answer(models.Model):
     text = models.TextField()
     question = models.ForeignKey(
-        Question, on_delete=models.CASCADE
+        Question, on_delete=models.CASCADE, related_name="answers"
     )  # many answers belong to one question
     is_correct = models.BooleanField(default=False)
 
@@ -44,10 +44,10 @@ class Answer(models.Model):
 
 class Attempt(models.Model):
     user = models.ForeignKey(
-        settings.AUTH_USER_MODEL, on_delete=models.CASCADE
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="attempts"
     )  # many attempts belong to one user
     test = models.ForeignKey(
-        Test, on_delete=models.CASCADE
+        Test, on_delete=models.CASCADE, related_name="attempts"
     )  # many attempts belong to one test
     score = models.FloatField(null=True, blank=True)
     correct_answers = models.PositiveIntegerField(null=True, blank=True)
@@ -59,15 +59,16 @@ class Attempt(models.Model):
 
 class UserAnswer(models.Model):
     attempt = models.ForeignKey(
-        Attempt, on_delete=models.CASCADE
+        Attempt, on_delete=models.CASCADE, related_name="user_answers"
     )  # many user answers belong to one attempt
     question = models.ForeignKey(
-        Question, on_delete=models.CASCADE
+        Question, on_delete=models.CASCADE, related_name="user_answers"
     )  # many user answers belong to one question
     answer = models.ForeignKey(
-        Answer, on_delete=models.CASCADE
+        Answer, on_delete=models.CASCADE, related_name="user_answers"
     )  # many user answers belong to one answer
     is_correct = models.BooleanField(default=False)
 
     def __str__(self):
         return f"{self.attempt} — {self.question}"
+    
