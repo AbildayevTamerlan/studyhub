@@ -1,4 +1,28 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+<h3>{{ test }}</h3>
+
+<form method="post">{% csrf_token %}
+   {% for question in questions %}
+      <fieldset>
+         <legend>{{ question }}</legend>
+         {% for answer in question.answers.all %}
+         <label>
+            <input 
+               type="radio"
+               name="question_{{ question.pk }}"
+               value="{{ answer.pk }}"
+               > 
+               {{ answer }}
+            <br>
+         </label>
+         {% endfor %}
+      </fieldset>
+   {% endfor %}
+
+   <input type="submit" value="Submit">
+</form>
+
 {% endblock content %}

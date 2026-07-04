@@ -1,4 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
+<h2>{{ subject }}</h2>
+<ul>
+   {% for test in tests %}
+   <a href="{% url 'take_test' test.pk%}"><li>{{ test }}</li></a>
+   {% endfor %}
+</ul>
 {% endblock content %}

@@ -52,3 +52,12 @@ body {
     width: min(1200px, 90%);
     margin: 40px auto;
 }
+
+.logout-button {
+    background: none;
+    border: none;
+    color: white;
+    font: inherit;
+    cursor: pointer;
+    padding: 0;
+}

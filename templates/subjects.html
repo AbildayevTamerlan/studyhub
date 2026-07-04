@@ -1,4 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
+<ul>
+   {% for subject in subjects %}
+   <a href="{% url 'subject_tests' subject.pk%}">{{ subject }}</a>
+   {% endfor %}
+</ul>
 {% endblock content %}
