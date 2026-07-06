@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+   {% for attempt in attempts %}
+      <h3>{{ attempt.test }}</h3>
+      <p>Result: {{ attempt.correct_answers }}/{{ attempt.total_questions }}</p>
+      <p>Completed at: {{ attempt.completed_at|date:"d.m.Y H:i" }}</p>
+      <br>
+   {% endfor %}
+{% endblock content %}

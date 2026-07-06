@@ -49,7 +49,7 @@ class Attempt(models.Model):
     test = models.ForeignKey(
         Test, on_delete=models.CASCADE, related_name="attempts"
     )  # many attempts belong to one test
-    score = models.FloatField(null=True, blank=True)
+    total_questions = models.PositiveIntegerField(null=True, blank=True)
     correct_answers = models.PositiveIntegerField(null=True, blank=True)
     completed_at = models.DateTimeField(null=True, blank=True)
 

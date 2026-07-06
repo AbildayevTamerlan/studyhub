@@ -20,7 +20,7 @@
 
     <nav class="navigation">
         <a href="{% url 'subjects' %}">Subjects</a>
-        <a href="#">History</a>
+        <a href="{% url 'history' %}">History</a>
         {% if user.is_authenticated %}
             <form action="{% url 'logout' %}" method="post">
                 {% csrf_token %}

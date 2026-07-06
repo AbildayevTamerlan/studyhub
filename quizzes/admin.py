@@ -28,7 +28,7 @@ class AnswerAdmin(admin.ModelAdmin):
 
 @admin.register(Attempt)
 class AttemptAdmin(admin.ModelAdmin):
-    list_display = ["user", "test", "score", "correct_answers", "completed_at"]
+    list_display = ["user", "test", "total_questions", "correct_answers", "completed_at"]
     list_filter = ["test", "completed_at"]
     search_fields = ["user__username", "test__title"]
 
