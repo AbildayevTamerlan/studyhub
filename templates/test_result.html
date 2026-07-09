@@ -1,7 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h3>{{ test }}</h3>
-<p>Result: {{ attempt.correct_answers }}/{{ attempt.total_questions }}</p>
-<p>Completed at: {{ attempt.completed_at|date:"d.m.Y H:i" }}</p>
+   <div class="test-result">
+      <h3>{{ test }}</h3>
+      <p>Result: {{ attempt.correct_answers }}/{{ attempt.total_questions }}</p>
+      <p>Completed at: {{ attempt.completed_at|date:"d.m.Y H:i" }}</p>
+      <a href="{% url 'take_test' test.pk %}">Take Again</a>
+      <a href="{% url 'subject_tests' test.subject.pk %}">Back to Tests</a>
+   </div>
 {% endblock content %}

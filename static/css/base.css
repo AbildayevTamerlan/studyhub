@@ -19,7 +19,7 @@ body {
 
     padding: 0 40px;
 
-    background: #6d28d9;
+    background: #4c1d95;
     color: white;
 
     box-shadow: 0 2px 8px rgba(0,0,0,.15);
@@ -49,7 +49,8 @@ body {
 }
 
 .container {
-    width: min(1200px, 90%);
+    max-width: 1280px;
+    width: min(1280px, 90%);
     margin: 40px auto;
 }
 
@@ -60,4 +61,135 @@ body {
     font: inherit;
     cursor: pointer;
     padding: 0;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+}
+
+.item {
+    display: flex;
+    flex-direction: column; 
+
+    min-height: 180px;
+    border: 1px solid #585858;
+    border-radius: 12px;
+    padding: 20px;
+
+    background: #ffffff;
+    color: #222;
+
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.item:hover {
+    background-color: #e5e5e5;
+    transform: translateY(-3px);
+}
+
+.item h3 {
+    font-size: 24px;
+    margin-bottom: 18px;
+}
+
+.item p {
+    font-size: 16px;
+    color: #666;
+}
+
+.test {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.test h3 {
+    font-size: 24px;
+    margin-bottom: 32px;;
+}
+
+.question {
+    margin-bottom: 32px;
+}
+
+.question h4 {
+    margin-bottom: 12px;
+}
+
+.question label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.submit-button {
+    border: 2px solid #4c1d95;
+    border-radius: 12px;
+    padding: 12px 24px;
+
+    display: block;
+    margin: 0 auto;
+
+    background-color: #4c1d95;
+    color: #f5f5f7;
+    font-size: 24px;
+
+    width: 280px;
+
+    transition: opacity .2s ease;
+}
+
+.submit-button:hover {
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+fieldset {
+    border: none;
+    padding: 0;
+}
+
+.question input {
+    margin-right: 8px;
+}
+
+.test-result {
+   display: block;
+   margin: 0 auto;
+   width: min(600px, 90%);
+   border: 2px solid #4c1d95;
+   border-radius: 12px;
+   padding: 24px;
+   text-align: center;
+}
+
+.test-result h3 {
+   font-size: 28px;
+   margin-bottom: 16px;
+}
+
+.test-result p {
+   font-size: 18px;
+   margin-bottom: 4px;
+}
+
+.test-result a {
+   display: inline-block;
+   border: 2px solid #4c1d95;
+   border-radius: 12px;
+   margin: 16px;
+   padding: 8px 16px;
+
+   color: #4c1d95;
+   font-size: 20px;
+
+   text-decoration: none;
+   transition: .2s;
+}
+
+.test-result a:hover {
+    background: #4c1d95;
+    color: white;
 }

@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 
@@ -50,14 +50,20 @@ def take_test(request, test_id):
         attempt.completed_at = timezone.now()
         attempt.save()  # insert the changes into database
 
-        return render(request, "test_result.html", {"test": test, "attempt": attempt})
+        # return render("test_result.html", {"test": test, "attempt": attempt})
+        return redirect("test_result", attempt_id=attempt.pk)
     else:
         context = {"test": test, "questions": test.questions.all()}
         return render(request, "take_test.html", context)
 
 
-def test_result(request, test_id):
-    context = {"test": get_object_or_404(Test, pk=test_id)}
+@login_required
+def test_result(request, attempt_id):
+    attempt = get_object_or_404(Attempt, pk=attempt_id, user=request.user)
+    context = {
+        "test": attempt.test,
+        "attempt": attempt,
+    }
     return render(request, "test_result.html", context)
 
 

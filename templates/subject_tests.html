@@ -1,10 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>{{ subject }}</h2>
-<ul>
-   {% for test in tests %}
-   <a href="{% url 'take_test' test.pk%}"><li>{{ test }}</li></a>
-   {% endfor %}
-</ul>
+   <h2>{{ subject }}</h2>
+   <br>
+      <div class="grid">
+         {% for test in tests %}
+            <a class="item" href="{% url 'take_test' test.pk%}">
+               <h3>{{ test }}</h3>
+               <p>{{ test.description }}</p>
+            </a>
+         {% endfor %}
+      </div>
 {% endblock content %}

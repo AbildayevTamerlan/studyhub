@@ -2,27 +2,29 @@
 
 {% block content %}
 
-<h3>{{ test }}</h3>
+   <div class="test">
+      <h3>{{ test }}</h3>
 
-<form method="post">{% csrf_token %}
-   {% for question in questions %}
-      <fieldset>
-         <legend>{{ question }}</legend>
-         {% for answer in question.answers.all %}
-         <label>
-            <input 
-               type="radio"
-               name="question_{{ question.pk }}"
-               value="{{ answer.pk }}"
-               > 
-               {{ answer }}
-            <br>
-         </label>
+      <form method="post">{% csrf_token %}
+         {% for question in questions %}
+            <fieldset class="question">
+               <h4>{{ forloop.counter }}. {{ question.text }}</h4>
+               {% for answer in question.answers.all %}
+               <label>
+                  <input 
+                     type="radio"
+                     name="question_{{ question.pk }}"
+                     value="{{ answer.pk }}"
+                     required
+                     >
+                     {{ answer.text }}
+               </label>
+               {% endfor %}
+            </fieldset>
          {% endfor %}
-      </fieldset>
-   {% endfor %}
 
-   <input type="submit" value="Submit">
-</form>
+         <input class="submit-button" type="submit" value="Submit">
+      </form>
+   </div>
 
 {% endblock content %}
